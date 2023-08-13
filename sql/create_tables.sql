@@ -25,3 +25,17 @@ create table store_business_hours (
     end_time_local   TIME,
     FOREIGN KEY (`store_id`) REFERENCES store_timezone(store_id)
 );
+
+drop table if exists temp_active_store;
+create temporary table if not exists temp_active_store (
+    store_id BIGINT NOT NULL,
+    date            DATE,
+    uptime          TIME
+);
+
+drop table if exists temp_inactive_store;
+create temporary table temp_inactive_store (
+    store_id BIGINT NOT NULL,
+    date            DATE,
+    uptime          TIME
+);
